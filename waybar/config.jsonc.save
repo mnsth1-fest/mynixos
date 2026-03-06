@@ -1,0 +1,95 @@
+#custom-vremya {
+  padding: 6px 14px;
+  margin: 6px 4px 6px 6px;
+  background-color: rgba(0,0,0,0.5);
+  color: @secondary;
+  border-radius: 50px;{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "margin-top": 6,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": [
+    "custom/clock",
+    "custom/vremya",
+    "wlr/taskbar"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "custom/notifications",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+
+  // ===== DATE =====
+
+"custom/clock": {
+  "exec": "date '+ %A %d.%m'",
+  "tooltip": true
+},
+
+"custom/vremya": {
+  "exec": "date '+ %H:%M'",
+  "interval": 60,
+  "tooltip": true
+},
+
+  // ===== TASKBAR =====
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "spacing": 6,
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "tooltip": true
+  },
+
+  // ===== WORKSPACES =====
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "sort-by-number": true,
+    "on-click": "activate"
+  },
+
+  // ===== AUDIO =====
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Muted",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+
+  // ===== NETWORK =====
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "󰈀 LAN",
+    "format-disconnected": "󰤭",
+    "on-click": "kitty nmtui",
+    "tooltip": true
+  },
+
+  // ===== BATTERY =====
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": [
+      "󰁺","󰁻","󰁼","󰁽","󰁾",
+      "󰁿","󰂀","󰂁","󰂂","󰁹"
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": [
+    "custom/clock",
+    "custom/vremya",
+    "hyprland/language"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+
+  // ===== DATE =====
+
+"custom/clock": {
+  "exec": "date '+ %A %d.%m'",
+  "tooltip": true
+},
+
+"custom/vremya": {
+  "exec": "date '+ %H:%M'" ,
+  "interval": 60,
+  "tooltip": true
+},
+
+  // ===== TASKBAR =====
+  "hyprland/language": {
+    "format": "{}",
+    "format-uk": "Ukrainian",
+    "format-en": "English",
+  },
+
+  // ===== WORKSPACES =====
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "sort-by-number": true,
+    "on-click": "activate"
+  },
+
+  // ===== AUDIO =====
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Muted",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+
+  // ===== NETWORK =====
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "󰈀 LAN",
+    "format-disconnected": "󰤭",
+    "on-click": "kitty nmtui",
+    "tooltip": true
+  },
+
+  // ===== BATTERY =====
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": [
+      "󰁺","󰁻","󰁼","󰁽","󰁾",
+      "󰁿","󰂀","󰂁","󰂂","󰁹"
+    ]
+  }
+}
