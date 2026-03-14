@@ -55,6 +55,15 @@ window#waybar {
   color: black;
 }
 
+#custom-logo {
+    min-width: 20px;
+    min-height: 20px;
+    margin-right: 6px;
+    background-image: url("/home/mofest/.config/waybar/icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 /* ===== TOOLTIP ===== */
 tooltip {
   background: rgba(15, 15, 15, 0.95);
@@ -63,3 +72,4 @@ tooltip {
   border-radius: 0;
   border: 1px solid alpha(@secondary, 0.2);
 }
+

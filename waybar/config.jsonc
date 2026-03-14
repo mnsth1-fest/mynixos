@@ -7,6 +7,7 @@
   "margin-right": 0,
 
   "modules-left": [
+    "custom/logo",
     "custom/clock",
     "custom/vremya",
     "hyprland/language"
@@ -19,37 +20,39 @@
   "modules-right": [
     "pulseaudio",
     "network",
-    "battery"
+    "battery",
+    "custom/logo"
   ],
 
-  // ===== DATE =====
+  "custom/logo": {
+    "format": " ",
+    "tooltip": false
+  },
 
-"custom/clock": {
-  "exec": "date '+ %A %d.%m'",
-  "tooltip": true
-},
+  "custom/clock": {
+    "exec": "date '+ %A %d.%m'",
+    "interval": 60,
+    "tooltip": true
+  },
 
-"custom/vremya": {
-  "exec": "date '+ %H:%M'" ,
-  "interval": 60,
-  "tooltip": true
-},
+  "custom/vremya": {
+    "exec": "date '+ %H:%M'",
+    "interval": 60,
+    "tooltip": true
+  },
 
-  // ===== TASKBAR =====
   "hyprland/language": {
     "format": "{}",
     "format-uk": "Ukrainian",
-    "format-en": "English",
+    "format-en": "English"
   },
 
-  // ===== WORKSPACES =====
   "hyprland/workspaces": {
     "format": "{id}",
     "sort-by-number": true,
     "on-click": "activate"
   },
 
-  // ===== AUDIO =====
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 Muted",
@@ -61,7 +64,6 @@
     }
   },
 
-  // ===== NETWORK =====
   "network": {
     "format-wifi": "  {signalStrength}%",
     "format-ethernet": "󰈀 LAN",
@@ -70,7 +72,6 @@
     "tooltip": true
   },
 
-  // ===== BATTERY =====
   "battery": {
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
