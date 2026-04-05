@@ -46,31 +46,35 @@
   #xdg.portal.enable = true;
   #Nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.modesetting.enable = true;
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;   
   hardware.nvidia.open = false;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   
-  #Hyprland  
-  #programs.hyprland = {
-  #  enable = true;
-  #  withUWSM = true;
-  #  xwayland.enable = true;
-  #};
-
-  # Enable Plasma 
-  services.desktopManager.plasma6.enable = true;
-
-  # Default display manager for Plasma
-  services.displayManager.sddm = {
-    enable = true;
-  
-  # To use Wayland (Experimental for SDDM)
-    wayland.enable = true;
+  hardware.nvidia.prime = {  
+    sync.enable = true;
+    nvidiaBusId = "PCI:1@0:0:0";
+    amdgpuBusId = "PCI:5@0:0:0";
   };
 
-  # Optionally enable xserver
-  services.xserver.enable = true;
+  #Hyprland  
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+
+  # Enable Plasma 
+  #services.desktopManager.plasma6.enable = true;
+
+  # Default display manager for Plasma
+  #services.displayManager.sddm = {
+  #  enable = true;
+  #};
+  # To use Wayland (Experimental for SDDM)
+  #  wayland.enable = true;
+  #};
 
   programs.zsh = {
   enable = true;
@@ -80,8 +84,8 @@
   histSize = 10000;
   };
   # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
+  #services.xserver.xkb.layout = "us";
+  #services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -118,30 +122,40 @@
    environment.systemPackages = with pkgs; [
      fastfetch
      htop
-     #kitty
+     kitty
      kdePackages.dolphin
      steam
-     #waybar
-     #matugen
+     waybar
+     matugen
      obsidian
-     #hyprlock
+     hyprlock
      cava
      cmatrix
      pipes
      git
      pavucontrol
      zsh-powerlevel10k
-     #grim
-     #slurp
-     #wl-clipboard
+     grim
+     slurp
+     wl-clipboard
      jetbrains.idea-oss
      jetbrains.pycharm-oss
      wofi
-     #swaybg
+     swaybg
      python3
      obs-studio
      krita
      mpv
+     pciutils
+     jetbrains.clion
+     gcc
+     swaynotificationcenter
+     #curl.dev
+     #curl
+     #vscodium     
+     #gnomeExtensions.blur-my-shell
+     #gnomeExtensions.just-perfection
+     #gnomeExtensions.arc-menu
    ];
 
    fonts.packages = with pkgs; [
@@ -156,4 +170,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
