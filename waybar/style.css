@@ -11,11 +11,11 @@
 
 /* ===== PANEL ===== */
 window#waybar {
-  background: rgba(10, 10, 10, 1);
+  background: rgba(10, 10, 10, 0.85);
   color: #eaeaea;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid alpha(@secondary, 0.15);
+  border-bottom: 1px solid alpha(@secondary, 0);
 }
 
 /* ===== COMMON BLOCK STYLE ===== */
@@ -27,7 +27,7 @@ window#waybar {
 #battery {
   padding: 4px 12px;
   margin: 0 6px 0 0;
-  background: alpha(@surface, 0.35);
+  background: alpha(@surface, 0);
   color: @secondary;
 }
 
@@ -42,7 +42,7 @@ window#waybar {
   padding: 4px 9px;
   margin: 0;
   background: transparent;
-  color: alpha(@secondary, 0.6);
+  color: alpha(@secondary, 0.65);
 }
 
 #workspaces button:hover {
@@ -55,15 +55,11 @@ window#waybar {
   color: black;
 }
 
-#custom-logo {
-    min-width: 20px;
-    min-height: 20px;
-    margin-right: 6px;
-    background-image: url("/home/mofest/.config/waybar/icon.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+#custom-notification {
+  font-family: "JetBrainsMono Nerd Font";
+  color: @secondary;
 }
+
 /* ===== TOOLTIP ===== */
 tooltip {
   background: rgba(15, 15, 15, 0.95);
@@ -72,4 +68,3 @@ tooltip {
   border-radius: 0;
   border: 1px solid alpha(@secondary, 0.2);
 }
-

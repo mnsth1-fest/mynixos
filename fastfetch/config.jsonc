@@ -11,7 +11,7 @@
   },
 
   "display": {
-    "separator": "  "
+    "separator": "   "
   },
 
   "modules": [
@@ -20,48 +20,48 @@
 
     {
       "type": "os",
-      "key": "os     "
+      "key": "ос     "
     },
     {
       "type": "wm",
-      "key": "de     "
+      "key": "вм     "
     },
     {
       "type": "packages",
       "format": "{} (nixpkgs)",
-      "key": "pkgs   "
+      "key": "пакети "
     },
     {
       "type": "shell",
-      "key": "shell  "
+      "key": "терм   "
     },
     {
       "type": "kernel",
-      "key": "kernel "
+      "key": "ядро   "
     },
     {
       "type": "uptime",
       "format": "{2}h {3}m",
-      "key": "uptime "
+      "key": "актив  "
     },
     {
       "type": "command",
-      "key": "os age ",
+      "key": "вік ос ",
       "text": "birth=$(stat -c %W /); now=$(date +%s); [ \"$birth\" -gt 0 ] && echo \"$(( (now - birth) / 86400 )) days\" || echo \"N/A\""
     },
     {
       "type": "memory",
-      "key": "memory "
+      "key": "пам'ять"
     },
 
     {
       "type": "swap",
-      "key": "swap   "
+      "key": "свапчік"
     },
 
     {
       "type": "disk",
-      "key": "storage",
+      "key": "дисочок",
     },
 
     "break",

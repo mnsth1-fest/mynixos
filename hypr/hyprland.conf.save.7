@@ -25,6 +25,7 @@ source = colors.conf
 # See https://wiki.hypr.land/Configuring/Monitors/
 monitor=eDP-1,1920x1080@144,auto,1
 
+
 ###################
 ### MY PROGRAMS ###
 ###################
@@ -46,8 +47,8 @@ $browser = firefox
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-exec-once = waybar & hyprlock
-exec-once = nohup swaybg -i wallpapers/24.jpg
+exec-once = waybar & swaync & hyprlock
+exec-once = nohup swaybg -i wallpapers/nixostyan.png -m fill
 
 #############################
 ### ENVIRONMENT VARIABLES ### Поки не цікаво за курсор
@@ -57,6 +58,7 @@ exec-once = nohup swaybg -i wallpapers/24.jpg
 
 env = XCURSOR_THEME,WhiteSur-cursors
 env = XCURSOR_SIZE,24
+
 
 ###################
 ### PERMISSIONS ### Не цікаво
@@ -83,17 +85,17 @@ env = XCURSOR_SIZE,24
 
 # https://wiki.hypr.land/Configuring/Variables/#general
 general {
-    gaps_in = 2
-    gaps_out = 5
+    gaps_in = 5
+    gaps_out = 10
 
-    border_size = 0
+    border_size = 2
 
     # https://wiki.hypr.land/Configuring/Variables/#variable-types for info about colors
     col.active_border = $secondary
     col.inactive_border = rgba(3c3836ff)
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
-    resize_on_border = true
+    resize_on_border = false
 
     # Please see https://wiki.hypr.land/Configuring/Tearing/ before you turn this on
     allow_tearing = false
@@ -103,32 +105,27 @@ general {
 
 # https://wiki.hypr.land/Configuring/Variables/#decoration
 decoration {
-    #rounding = 10
-    #rounding_power = 2
+    rounding = 10
+    rounding_power = 2
 
     # Change transparency of focused and unfocused windows
     active_opacity = 1.0
     inactive_opacity = 1.0
 
     shadow {
-        enabled = true #було true
+        enabled = false #було true
         range = 4
         render_power = 3
-        color = rgba(1a1a1aee)
+        color = $on_primary_fixed_variant
     }
 
-    # Blur waybar
-    layerrule = blur on, match:namespace waybar
-    layerrule = blur on, match:namespace swaync-client
-    # Blur swaync
-    layerrule = blur on, match:namespace swaync-notification-window
     # https://wiki.hypr.land/Configuring/Variables/#blur
     blur {
-        enabled = yes
-        size = 6
-        passes = 3
-        new_optimizations = on
-        ignore_opacity = on
+        enabled = true
+        size = 2
+        passes = 2
+        new_optimizations = true
+        vibrancy = 0.1696
     }
 }
 
@@ -174,12 +171,13 @@ animations {
 
 #--------------- windowrule2 мої правила ----------------------
 #windowrule = opacity 0.9 0.9, match:class xfce4-terminal
-windowrule = opacity 0.85 0.85, match:class waterfox
-windowrule = opacity 0.85 0.85, match:class vesktop
-windowrule = opacity 0.85 0.85, match:class steam
-windowrule = opacity 0.85 0.85, match:class Spotify
+#windowrule = opacity 0.9 0.9, match:class firefox
+#windowrule = opacity 0.9 0.9, match:class vesktop
+#windowrule = opacity 0.9 0.9, match:class steam
+#windowrule = opacity 0.85 0.85, match:class Spotify
 #windowrule = fullscreen, match:class cs2
 #windowrule = noborder, match:class: cs2
+
 
 #windowrulev2 = fullscreen,noborder,class:^(steam_app_3527290)$
 #windowrulev2 = noanim,class:^(steam_app_3527290)$
@@ -188,6 +186,7 @@ windowrule = opacity 0.85 0.85, match:class Spotify
 
 # See https://wiki.hypr.land/Configuring/Dwindle-Layout/ for more
 dwindle {
+    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = true # You probably want this
 }
 
@@ -252,27 +251,25 @@ bind = $mainMod, O, exec, obsidian
 #bind = $mainMod, Q, exec, xfce4-terminal
 bind = $mainMod, C, killactive,
 #bind = $mainMod, /, exec, hyprlock
-bind = $mainMod, B, exec, flatpak run net.waterfox.waterfox
+bind = $mainMod, B, exec, $browser
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, V, togglefloating,
 bind = $mainMod, R, exec, flatpak run com.rustdesk.RustDesk
-bind = $mainMod, S, exec, flatpak run com.spotify.Client
 #bind = $mainMod, P, pseudo, # dwindle
-#bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, J, togglesplit, # dwindle
 
 #мої бінди
 bind = $mainMod, F, fullscreen
 bind = $mainMod, Z, exec, flatpak run dev.vencord.Vesktop
 bind = $mainMod, X, exec, steam
 bind = $mainMod, N, exec, clion
-bind = $mainMod, S, exec, obs
-bind = $mainMod, L, exec, libreoffice
+bind = $mainMod, L, exec, obs
 bind = $mainMod, K, exec, krita
 bind = $mainMod, M, exec, hyprlock 
 bind = $mainMod, T, exec, flatpak run org.torproject.torbrowser-launcher
 bind = $mainMod, J, exec, idea-oss
-bind = $mainMod, G, exec, gnome-boxes 
-bind = $mainMod, P, exec, ./prisma.sh
+#bind = $mainMod, G, exec, gnome-boxes 
+bind = $mainMod, P, exec, pycharm-oss
 #bind = $mainMod, , exec, hyprlock
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l

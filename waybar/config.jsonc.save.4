@@ -1,10 +1,10 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 25,
-  "margin-top": 5,
-  "margin-left": 3020,
-  "margin-right": 300,
+  "height": 30,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
 
   "modules-left": [
     "custom/clock",
@@ -17,40 +17,40 @@
   ],
 
   "modules-right": [
+    "custom/notification",
     "pulseaudio",
     "network",
     "battery"
   ],
 
-  "custom/logo": {
-    "format": " ",
-    "tooltip": false
-  },
+  // ===== DATE =====
 
-  "custom/clock": {
-    "exec": "date '+ %A %d.%m'",
-    "interval": 60,
-    "tooltip": true
-  },
+"custom/clock": {
+  "exec": "date '+ %A %d.%m'",
+  "tooltip": true
+},
 
-  "custom/vremya": {
-    "exec": "date '+ %H:%M'",
-    "interval": 60,
-    "tooltip": true
-  },
+"custom/vremya": {
+  "exec": "date '+ %H:%M'" ,
+  "interval": 60,
+  "tooltip": true
+},
 
+  // ===== TASKBAR =====
   "hyprland/language": {
     "format": "{}",
-    "format-uk": "Ukrainian",
-    "format-en": "English"
+    "format-uk": "",
+    "format-en": "English",
   },
 
+  // ===== WORKSPACES =====
   "hyprland/workspaces": {
     "format": "{id}",
     "sort-by-number": true,
     "on-click": "activate"
   },
 
+  // ===== AUDIO =====
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 Muted",
@@ -62,6 +62,7 @@
     }
   },
 
+  // ===== NETWORK =====
   "network": {
     "format-wifi": "  {signalStrength}%",
     "format-ethernet": "󰈀 LAN",
@@ -70,6 +71,28 @@
     "tooltip": true
   },
 
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫 ",
+      "none": "󰂜 ",
+      "dnd-notification": "󰂠 ",
+      "dnd-none": "󰪓 ",
+      "inhibited-notification": "󰂛 ",
+      "inhibited-none": "󰪑 ",
+      "dnd-inhibited-notification": "󰂛 ",
+      "dnd-inhibited-none": "󰪑 "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  
+  // ===== BATTERY =====
   "battery": {
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
