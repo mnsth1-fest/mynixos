@@ -1,0 +1,122 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-top": 2,
+  "margin-left": 5,
+  "margin-right": 5,
+
+  "modules-left": [
+    "custom/clock",
+    "custom/vremya",
+    "hyprland/language"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "custom/notification",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+
+  // ===== DATE =====
+
+"custom/clock": {
+  "exec": "LANG=uk_UA.UTF-8 LC_TIME=uk_UA.UTF-8 bash -c 'set -- $(date \"+ %A %d.%m\"); echo \"$1 ${2^} $3\"'",
+  "tooltip": true
+},
+
+"custom/vremya": {
+  "exec": "date '+ %H:%M'" ,
+  "interval": 60,
+  "tooltip": true
+},
+
+  // ===== TASKBAR =====
+  "hyprland/language": {
+    "format": "{}",
+    "format-uk": "Українська",
+    "format-en": "Англійська",
+  },
+
+  // ===== WORKSPACES =====
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+      "10": "X"
+    },
+    "sort-by-number": true,
+    "on-click": "activate"
+  },
+
+
+  // ===== AUDIO =====
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Замьючений",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+
+  // ===== NETWORK =====
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "󰈀 LAN",
+    "format-disconnected": "󰤭",
+    "on-click": "kitty nmtui",
+    "tooltip": true
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫 ",
+      "none": "󰂜 ",
+      "dnd-notification": "󰂠 ",
+      "dnd-none": "󰪓 ",
+      "inhibited-notification": "󰂛 ",
+      "inhibited-none": "󰪑 ",
+      "dnd-inhibited-notification": "󰂛 ",
+      "dnd-inhibited-none": "󰪑 "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  
+  // ===== BATTERY =====
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": [
+      "󰁺","󰁻","󰁼","󰁽","󰁾",
+      "󰁿","󰂀","󰂁","󰂂","󰁹"
+    ]
+  }
+}

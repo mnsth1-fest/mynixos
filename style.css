@@ -1,0 +1,83 @@
+@import "colors.css";
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+/* ===== PANEL ===== */
+window#waybar {
+  background: rgba(0, 0, 0, 0.85);
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid alpha(@secondary, 0);
+}
+
+/* ===== COMMON BLOCK STYLE ===== */
+#custom-clock,
+#custom-vremya,
+#language,
+#pulseaudio,
+#network,
+#battery {
+  padding: 4px 12px;
+  margin: 0 6px 0 0;
+  background: alpha(@surface, 0);
+  color: @secondary;
+}
+
+/* ===== CENTER / WORKSPACES ===== */
+
+#workspaces {
+  margin: 6px;
+  padding: 0;
+  background: transparent;
+}
+
+/* базовий вигляд = просто текст */
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 2px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: grey;
+  font-size: 13px;
+}
+
+/* hover = просто зміна кольору */
+#workspaces button:hover {
+  color: @secondary;
+  opacity: 0.8;
+}
+
+/* активний = підкреслення */
+#workspaces button.active {
+  color: @secondary;
+}
+
+/* прибираємо всі “форми” */
+#workspaces button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#custom-notification {
+  font-family: "JetBrainsMono Nerd Font";
+  color: @secondary;
+}
+
+/* ===== TOOLTIP ===== */
+tooltip {
+  background: rgba(15, 15, 15, 0.95);
+  color: @inverse_surface;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid alpha(@secondary, 0.2);
+}
