@@ -11,7 +11,7 @@
 
 /* ===== PANEL ===== */
 window#waybar {
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(0, 0, 0, 0.85);
   color: #eaeaea;
   margin: 0;
   padding: 0;
@@ -32,27 +32,40 @@ window#waybar {
 }
 
 /* ===== CENTER / WORKSPACES ===== */
+
 #workspaces {
-  margin: 0 6px;
+  margin: 6px;
   padding: 0;
   background: transparent;
 }
 
+/* базовий вигляд = просто текст */
 #workspaces button {
-  padding: 4px 9px;
-  margin: 0;
+  padding: 0 6px;
+  margin: 0 2px;
+
   background: transparent;
-  color: alpha(@secondary, 0.65);
+  border: none;
+  border-radius: 0;
+  color: grey;
+  font-size: 13px;
 }
 
+/* hover = просто зміна кольору */
 #workspaces button:hover {
-  background: alpha(@secondary, 0.25);
+  color: @secondary;
+  opacity: 0.8;
+}
+
+/* активний = підкреслення */
+#workspaces button.active {
   color: @secondary;
 }
 
-#workspaces button.active {
-  background: @secondary;
-  color: black;
+/* прибираємо всі “форми” */
+#workspaces button:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 #custom-notification {
